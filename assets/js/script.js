@@ -6,7 +6,7 @@ class Propietario {
     }
 
     datosPropietario() {
-        return `Los datos del propietario son: ${this.nombre}, ${this.direccion} y ${this.telefono}`;
+        return `${this.nombre}, domiciliado en: ${this.direccion} y su telefono es: ${this.telefono}`;
     }
 }
 
@@ -18,7 +18,7 @@ class Animal extends Propietario {
     }
 
     datosAnimal() {
-        return `Los datos del animal son: nombre: ${this.nombreAnimal}, tipo: ${this.tipo}.`;
+        return `${this.nombreAnimal}, tipo: ${this.tipo}`;
     }
 }
 
@@ -67,8 +67,36 @@ class Conejo extends Animal {
     }
 }
 
-let pro1 = new Propietario('Angel', 'Santiago Centro', '931231795');
-let ani1 = new Animal('Angel', 'Santiago Centro', '931231795', 'Kira', 'Perro');
+let formulario = document.querySelector('form');
+console.log(formulario);
 
-//console.log(pro1.datosPropietario());
-console.log(ani1.datosAnimal());
+let validando = (event) => {
+    event.preventDefault();
+    let nombre = document.getElementById('propietario').value;
+    let direccion = document.getElementById('direccion').value;
+    let telefono = parseInt(document.getAnimations('telefono').value);
+    let nombreAnimal = document.getElementById('nombreMascota').value;
+    let tipo = document.getElementById('tipo').value;
+    let enfermedad = document.getElementById('enfermedad').value;
+
+    let pro1 = new Propietario(nombre, direccion, telefono);
+    let ani1 = new Animal(nombre, direccion, telefono, nombreAnimal, tipo, enfermedad);
+
+
+
+    document.getElementById('resultado').innerHTML =    `<ul>
+                                                            <li>El nombre del dueño es: ${pro1.datosPropietario()}</li>
+                                                            <li>El nombre del animal es: ${ani1.datosAnimal()} y la enfermedad es: ${ani1.otraEnfermedad}</li>
+                                                        </ul>`;
+
+                                                        console.log(Propietario.telefono);
+
+}
+
+formulario.addEventListener('submit', validando)
+
+/* let pro1 = new Propietario('Angel', 'Santiago Centro', 931231795);
+let ani1 = new Animal('Angel', 'Santiago Centro', '931231795', 'Kira', 'Perro', 'otitis');
+
+console.log(pro1.telefono);
+console.log(ani1.enfermedad); */
